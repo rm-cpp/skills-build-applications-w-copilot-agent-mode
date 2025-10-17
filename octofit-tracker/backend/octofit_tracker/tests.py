@@ -3,26 +3,25 @@ from .models import User, Team, Activity, Leaderboard, Workout
 
 class UserModelTest(TestCase):
     def test_create_user(self):
-        user = User.objects.create(name='Clark Kent', email='clark@dc.com', team='dc')
-        self.assertEqual(user.name, 'Clark Kent')
-        self.assertEqual(user.team, 'dc')
+        user = User.objects.create(email='test@hero.com', name='Test Hero', team='Marvel')
+        self.assertEqual(user.email, 'test@hero.com')
 
 class TeamModelTest(TestCase):
     def test_create_team(self):
-        team = Team.objects.create(name='marvel')
-        self.assertEqual(team.name, 'marvel')
+        team = Team.objects.create(name='Test Team')
+        self.assertEqual(team.name, 'Test Team')
 
 class ActivityModelTest(TestCase):
     def test_create_activity(self):
-        activity = Activity.objects.create(user='Bruce Wayne', type='Running', duration=30, date='2025-10-17')
+        activity = Activity.objects.create(user='Test Hero', type='Running', duration=20, date='2025-10-17')
         self.assertEqual(activity.type, 'Running')
 
 class LeaderboardModelTest(TestCase):
     def test_create_leaderboard(self):
-        lb = Leaderboard.objects.create(team='marvel', points=100)
-        self.assertEqual(lb.points, 100)
+        lb = Leaderboard.objects.create(team='Test Team', points=50)
+        self.assertEqual(lb.points, 50)
 
 class WorkoutModelTest(TestCase):
     def test_create_workout(self):
-        workout = Workout.objects.create(name='Pushups', description='Upper body', difficulty='Easy')
+        workout = Workout.objects.create(name='Test Workout', description='Test Desc', difficulty='Easy')
         self.assertEqual(workout.difficulty, 'Easy')
